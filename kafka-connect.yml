@@ -6,7 +6,7 @@ metadata:
     strimzi.io/use-connector-resources: "true"
 spec:
   version: 3.1.0
-  image: anhcr.azurecr.io/debezium-connect-cluster
+  image: anhcr.azurecr.io/debezium-connect-cluster:latest
   replicas: 1
   bootstrapServers: debezium-cluster-kafka-bootstrap:9092
   config:
