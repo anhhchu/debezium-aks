@@ -29,8 +29,10 @@ spec:
         artifacts:
           - type: tgz
             url: https://repo1.maven.org/maven2/io/debezium/debezium-connector-mysql/2.1.1.Final/debezium-connector-mysql-2.1.1.Final-plugin.tar.gz
+            sha512sum: e8f0cdfb2f2c15d8c4685bc4736fd1a94f80bda0327dd02e771a10c8d285b4b8c1e17e7c583b55a174cb375ccd047156e67de44cdb50c7634a5710d7f60f6049
       - name: debezium-postgres-connector
         artifacts:
           - type: zip
             url: https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/2.1.1.Final/debezium-connector-postgres-2.1.1.Final-plugin.zip
-            sha512sum: ef1620547e6ddf5be010271849b6a87a19f6e6beee93b379c80883815b8f37ec5137095b2c99975d7704cbf957e6a33d76c61109582cad57c7cbbfae43adc86c
+            sha512sum: a647a5c4ada510ba521ecdbdc789c01ee73675bb9a97dbf45d0f70251be778360aa52de62b60f8f2791f875d95e7793cad96c5dcddb911c2cea79ea40e85fbe4
+            
