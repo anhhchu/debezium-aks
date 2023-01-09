@@ -1,0 +1,18 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: connector-configuration-role-binding
+  namespace: debezium-eh
+subjects:
+- kind: ServiceAccount
+  name: kafka-connect-eh-connect
+  namespace: debezium-eh
+roleRef:
+  kind: Role
+  name: connector-configuration-role
+  apiGroup: rbac.authorization.k8s.io
+
+# The service account will be created by Strimzi once we deploy Kafka Connect. 
+# The name of the service account take the form $KafkaConnectName-connect. 
+# Later on, we will the create Kafka Connect cluster named debezium-connect-cluster 
+# and therefore we used debezium-connect-cluster-connect here as a subjects.name.
