@@ -1,0 +1,105 @@
+Name:             kafka-connect-eh-connect-74ff4675df-svfm5
+Namespace:        debezium-eh
+Priority:         0
+Service Account:  kafka-connect-eh-connect
+Node:             aks-agentpool-20392102-vmss000000/10.224.0.4
+Start Time:       Mon, 09 Jan 2023 00:10:52 -0800
+Labels:           app.kubernetes.io/instance=kafka-connect-eh
+                  app.kubernetes.io/managed-by=strimzi-cluster-operator
+                  app.kubernetes.io/name=kafka-connect
+                  app.kubernetes.io/part-of=strimzi-kafka-connect-eh
+                  pod-template-hash=74ff4675df
+                  strimzi.io/cluster=kafka-connect-eh
+                  strimzi.io/kind=KafkaConnect
+                  strimzi.io/name=kafka-connect-eh-connect
+Annotations:      strimzi.io/auth-hash: 0
+                  strimzi.io/logging-appenders-hash: 06ee78c4
+Status:           Running
+IP:               10.244.1.96
+IPs:
+  IP:           10.244.1.96
+Controlled By:  ReplicaSet/kafka-connect-eh-connect-74ff4675df
+Containers:
+  kafka-connect-eh-connect:
+    Container ID:  containerd://105d2390640956333d2ae5b18be550127854ebf100200e1e7087e9e23d28747c
+    Image:         anhcr.azurecr.io/debezium-connect-cluster:latest
+    Image ID:      anhcr.azurecr.io/debezium-connect-cluster@sha256:26e33c427970312c529ece7597c1d8b893f22d7dcc4b981e6a69e242d02e14fd
+    Port:          8083/TCP
+    Host Port:     0/TCP
+    Command:
+      /opt/kafka/kafka_connect_run.sh
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    2
+      Started:      Tue, 10 Jan 2023 11:00:46 -0800
+      Finished:     Tue, 10 Jan 2023 11:01:52 -0800
+    Ready:          False
+    Restart Count:  393
+    Liveness:       http-get http://:rest-api/ delay=60s timeout=5s period=10s #success=1 #failure=3
+    Readiness:      http-get http://:rest-api/ delay=60s timeout=5s period=10s #success=1 #failure=3
+    Environment:
+      KAFKA_CONNECT_CONFIGURATION:      offset.storage.topic=connect-cluster-offsets
+                                        value.converter=org.apache.kafka.connect.json.JsonConverter
+                                        config.storage.topic=connect-cluster-configs
+                                        key.converter=org.apache.kafka.connect.json.JsonConverter
+                                        group.id=connect-cluster
+                                        status.storage.topic=connect-cluster-status
+                                        config.providers=secrets
+                                        config.providers.secrets.class=io.strimzi.kafka.KubernetesSecretConfigProvider
+                                        config.storage.replication.factor=1
+                                        consumer.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://anh-test-eventhub.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=IlTOf1rcMPN9zfPbvCjR64bGSN7lVKttOWmDAi8csnE=";
+                                        consumer.sasl.mechanism=PLAIN
+                                        consumer.security.protocol=SASL_SSL
+                                        internal.key.converter=org.apache.kafka.connect.json.JsonConverter
+                                        internal.key.converter.schemas.enable=false
+                                        internal.value.converter=org.apache.kafka.connect.json.JsonConverter
+                                        internal.value.converter.schemas.enable=false
+                                        offset.flush.interval.ms=10000
+                                        offset.storage.replication.factor=1
+                                        producer.override.max.request.size=1582422
+                                        producer.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://anh-test-eventhub.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=IlTOf1rcMPN9zfPbvCjR64bGSN7lVKttOWmDAi8csnE=";
+                                        producer.sasl.mechanism=PLAIN
+                                        producer.security.protocol=SASL_SSL
+                                        status.storage.replication.factor=1
+                                        
+      KAFKA_CONNECT_METRICS_ENABLED:    false
+      KAFKA_CONNECT_BOOTSTRAP_SERVERS:  anh-test-eventhub.servicebus.windows.net:9093
+      STRIMZI_KAFKA_GC_LOG_ENABLED:     false
+      KAFKA_HEAP_OPTS:                  -Xms128M
+    Mounts:
+      /opt/kafka/custom-config/ from kafka-metrics-and-logging (rw)
+      /tmp from strimzi-tmp (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-bsfgc (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  strimzi-tmp:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     Memory
+    SizeLimit:  5Mi
+  kafka-metrics-and-logging:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      kafka-connect-eh-connect-config
+    Optional:  false
+  kube-api-access-bsfgc:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                     From     Message
+  ----     ------     ----                    ----     -------
+  Warning  Unhealthy  98m (x295 over 34h)     kubelet  Readiness probe failed: Get "http://10.244.1.96:8083/": dial tcp 10.244.1.96:8083: connect: connection refused
+  Normal   Pulling    28m (x390 over 34h)     kubelet  Pulling image "anhcr.azurecr.io/debezium-connect-cluster:latest"
+  Warning  BackOff    2m50s (x7885 over 34h)  kubelet  Back-off restarting failed container

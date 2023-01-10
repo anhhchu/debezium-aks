@@ -1,0 +1,510 @@
+Preparing truststore
+Preparing truststore is complete
+Starting Kafka Connect with configuration:
+# Bootstrap servers
+bootstrap.servers=anh-test-eventhub.servicebus.windows.net:9093
+# REST Listeners
+rest.port=8083
+rest.advertised.host.name=10.244.1.96
+rest.advertised.port=8083
+# Plugins
+plugin.path=/opt/kafka/plugins
+# Provided configuration
+offset.storage.topic=connect-cluster-offsets
+value.converter=org.apache.kafka.connect.json.JsonConverter
+config.storage.topic=connect-cluster-configs
+key.converter=org.apache.kafka.connect.json.JsonConverter
+group.id=connect-cluster
+status.storage.topic=connect-cluster-status
+config.providers=secrets
+config.providers.secrets.class=io.strimzi.kafka.KubernetesSecretConfigProvider
+config.storage.replication.factor=1
+consumer.sasl.jaas.config=[hidden]
+consumer.sasl.mechanism=PLAIN
+consumer.security.protocol=SASL_SSL
+internal.key.converter=org.apache.kafka.connect.json.JsonConverter
+internal.key.converter.schemas.enable=false
+internal.value.converter=org.apache.kafka.connect.json.JsonConverter
+internal.value.converter.schemas.enable=false
+offset.flush.interval.ms=10000
+offset.storage.replication.factor=1
+producer.override.max.request.size=1582422
+producer.sasl.jaas.config=[hidden]
+producer.sasl.mechanism=PLAIN
+producer.security.protocol=SASL_SSL
+status.storage.replication.factor=1
+
+
+security.protocol=PLAINTEXT
+producer.security.protocol=PLAINTEXT
+consumer.security.protocol=PLAINTEXT
+admin.security.protocol=PLAINTEXT
+
+
+
+
+# Additional configuration
+consumer.client.rack=
+
++ exec /usr/bin/tini -w -e 143 -- /opt/kafka/bin/connect-distributed.sh /tmp/strimzi-connect.properties
+2023-01-10 19:00:48,352 INFO WorkerInfo values: 
+	jvm.args = -Xms128M, -XX:+UseG1GC, -XX:MaxGCPauseMillis=20, -XX:InitiatingHeapOccupancyPercent=35, -XX:+ExplicitGCInvokesConcurrent, -XX:MaxInlineLevel=15, -Djava.awt.headless=true, -Dcom.sun.management.jmxremote, -Dcom.sun.management.jmxremote.authenticate=false, -Dcom.sun.management.jmxremote.ssl=false, -Dkafka.logs.dir=/opt/kafka, -Dlog4j.configuration=file:/opt/kafka/custom-config/log4j.properties
+	jvm.spec = Red Hat, Inc., OpenJDK 64-Bit Server VM, 11.0.17, 11.0.17+8-LTS
+	jvm.classpath = /opt/kafka/bin/../libs/accessors-smart-2.4.7.jar:/opt/kafka/bin/../libs/activation-1.1.1.jar:/opt/kafka/bin/../libs/annotations-13.0.jar:/opt/kafka/bin/../libs/aopalliance-repackaged-2.6.1.jar:/opt/kafka/bin/../libs/argparse4j-0.7.0.jar:/opt/kafka/bin/../libs/audience-annotations-0.5.0.jar:/opt/kafka/bin/../libs/checker-qual-3.5.0.jar:/opt/kafka/bin/../libs/commons-cli-1.4.jar:/opt/kafka/bin/../libs/commons-lang-2.6.jar:/opt/kafka/bin/../libs/commons-lang3-3.12.0.jar:/opt/kafka/bin/../libs/commons-lang3-3.8.1.jar:/opt/kafka/bin/../libs/connect-api-3.3.1.jar:/opt/kafka/bin/../libs/connect-basic-auth-extension-3.3.1.jar:/opt/kafka/bin/../libs/connect-json-3.3.1.jar:/opt/kafka/bin/../libs/connect-mirror-3.3.1.jar:/opt/kafka/bin/../libs/connect-mirror-client-3.3.1.jar:/opt/kafka/bin/../libs/connect-runtime-3.3.1.jar:/opt/kafka/bin/../libs/connect-transforms-3.3.1.jar:/opt/kafka/bin/../libs/cruise-control-metrics-reporter-2.5.103.jar:/opt/kafka/bin/../libs/error_prone_annotations-2.3.4.jar:/opt/kafka/bin/../libs/failureaccess-1.0.1.jar:/opt/kafka/bin/../libs/gson-2.9.0.jar:/opt/kafka/bin/../libs/guava-30.1-jre.jar:/opt/kafka/bin/../libs/hk2-api-2.6.1.jar:/opt/kafka/bin/../libs/hk2-locator-2.6.1.jar:/opt/kafka/bin/../libs/hk2-utils-2.6.1.jar:/opt/kafka/bin/../libs/j2objc-annotations-1.3.jar:/opt/kafka/bin/../libs/jackson-annotations-2.13.3.jar:/opt/kafka/bin/../libs/jackson-core-2.13.3.jar:/opt/kafka/bin/../libs/jackson-databind-2.13.3.jar:/opt/kafka/bin/../libs/jackson-dataformat-csv-2.13.3.jar:/opt/kafka/bin/../libs/jackson-dataformat-yaml-2.13.3.jar:/opt/kafka/bin/../libs/jackson-datatype-jdk8-2.13.3.jar:/opt/kafka/bin/../libs/jackson-datatype-jsr310-2.13.3.jar:/opt/kafka/bin/../libs/jackson-jaxrs-base-2.13.3.jar:/opt/kafka/bin/../libs/jackson-jaxrs-json-provider-2.13.3.jar:/opt/kafka/bin/../libs/jackson-jr-objects-2.13.3.jar:/opt/kafka/bin/../libs/jackson-module-jaxb-annotations-2.13.3.jar:/opt/kafka/bin/../libs/jackson-module-scala_2.13-2.13.3.jar:/opt/kafka/bin/../libs/jaeger-client-1.8.1.jar:/opt/kafka/bin/../libs/jaeger-core-1.8.1.jar:/opt/kafka/bin/../libs/jaeger-thrift-1.8.1.jar:/opt/kafka/bin/../libs/jaeger-tracerresolver-1.8.1.jar:/opt/kafka/bin/../libs/jakarta.activation-api-1.2.2.jar:/opt/kafka/bin/../libs/jakarta.annotation-api-1.3.5.jar:/opt/kafka/bin/../libs/jakarta.inject-2.6.1.jar:/opt/kafka/bin/../libs/jakarta.validation-api-2.0.2.jar:/opt/kafka/bin/../libs/jakarta.ws.rs-api-2.1.6.jar:/opt/kafka/bin/../libs/jakarta.xml.bind-api-2.3.3.jar:/opt/kafka/bin/../libs/javassist-3.27.0-GA.jar:/opt/kafka/bin/../libs/javax.servlet-api-3.1.0.jar:/opt/kafka/bin/../libs/javax.ws.rs-api-2.1.1.jar:/opt/kafka/bin/../libs/jaxb-api-2.3.0.jar:/opt/kafka/bin/../libs/jersey-client-2.34.jar:/opt/kafka/bin/../libs/jersey-common-2.34.jar:/opt/kafka/bin/../libs/jersey-container-servlet-2.34.jar:/opt/kafka/bin/../libs/jersey-container-servlet-core-2.34.jar:/opt/kafka/bin/../libs/jersey-hk2-2.34.jar:/opt/kafka/bin/../libs/jersey-server-2.34.jar:/opt/kafka/bin/../libs/jetty-client-9.4.48.v20220622.jar:/opt/kafka/bin/../libs/jetty-continuation-9.4.48.v20220622.jar:/opt/kafka/bin/../libs/jetty-http-9.4.48.v20220622.jar:/opt/kafka/bin/../libs/jetty-io-9.4.48.v20220622.jar:/opt/kafka/bin/../libs/jetty-security-9.4.48.v20220622.jar:/opt/kafka/bin/../libs/jetty-server-9.4.48.v20220622.jar:/opt/kafka/bin/../libs/jetty-servlet-9.4.48.v20220622.jar:/opt/kafka/bin/../libs/jetty-servlets-9.4.48.v20220622.jar:/opt/kafka/bin/../libs/jetty-util-9.4.48.v20220622.jar:/opt/kafka/bin/../libs/jetty-util-ajax-9.4.48.v20220622.jar:/opt/kafka/bin/../libs/jline-3.21.0.jar:/opt/kafka/bin/../libs/jmx_prometheus_javaagent-0.17.2.jar:/opt/kafka/bin/../libs/jopt-simple-5.0.4.jar:/opt/kafka/bin/../libs/jose4j-0.7.9.jar:/opt/kafka/bin/../libs/json-path-2.6.0.jar:/opt/kafka/bin/../libs/json-smart-2.4.7.jar:/opt/kafka/bin/../libs/jsonevent-layout-1.7.jar:/opt/kafka/bin/../libs/jsr305-3.0.2.jar:/opt/kafka/bin/../libs/kafka-agent-0.32.0.jar:/opt/kafka/bin/../libs/kafka-clients-3.3.1.jar:/opt/kafka/bin/../libs/kafka-env-var-config-provider-1.0.0.jar:/opt/kafka/bin/../libs/kafka-kubernetes-config-provider-1.0.1.jar:/opt/kafka/bin/../libs/kafka-log4j-appender-3.3.1.jar:/opt/kafka/bin/../libs/kafka-metadata-3.3.1.jar:/opt/kafka/bin/../libs/kafka-oauth-client-0.11.0.jar:/opt/kafka/bin/../libs/kafka-oauth-common-0.11.0.jar:/opt/kafka/bin/../libs/kafka-oauth-keycloak-authorizer-0.11.0.jar:/opt/kafka/bin/../libs/kafka-oauth-server-0.11.0.jar:/opt/kafka/bin/../libs/kafka-oauth-server-plain-0.11.0.jar:/opt/kafka/bin/../libs/kafka-quotas-plugin-0.2.0.jar:/opt/kafka/bin/../libs/kafka-raft-3.3.1.jar:/opt/kafka/bin/../libs/kafka-server-common-3.3.1.jar:/opt/kafka/bin/../libs/kafka-shell-3.3.1.jar:/opt/kafka/bin/../libs/kafka-storage-3.3.1.jar:/opt/kafka/bin/../libs/kafka-storage-api-3.3.1.jar:/opt/kafka/bin/../libs/kafka-streams-3.3.1.jar:/opt/kafka/bin/../libs/kafka-streams-examples-3.3.1.jar:/opt/kafka/bin/../libs/kafka-streams-scala_2.13-3.3.1.jar:/opt/kafka/bin/../libs/kafka-streams-test-utils-3.3.1.jar:/opt/kafka/bin/../libs/kafka-tools-3.3.1.jar:/opt/kafka/bin/../libs/kafka_2.13-3.3.1.jar:/opt/kafka/bin/../libs/kotlin-stdlib-1.6.20.jar:/opt/kafka/bin/../libs/kotlin-stdlib-common-1.5.31.jar:/opt/kafka/bin/../libs/kotlin-stdlib-jdk7-1.5.31.jar:/opt/kafka/bin/../libs/kotlin-stdlib-jdk8-1.5.31.jar:/opt/kafka/bin/../libs/kubernetes-client-6.0.0.jar:/opt/kafka/bin/../libs/kubernetes-client-api-6.0.0.jar:/opt/kafka/bin/../libs/kubernetes-httpclient-okhttp-6.0.0.jar:/opt/kafka/bin/../libs/kubernetes-model-apps-6.0.0.jar:/opt/kafka/bin/../libs/kubernetes-model-batch-6.0.0.jar:/opt/kafka/bin/../libs/kubernetes-model-certificates-6.0.0.jar:/opt/kafka/bin/../libs/kubernetes-model-common-6.0.0.jar:/opt/kafka/bin/../libs/kubernetes-model-core-6.0.0.jar:/opt/kafka/bin/../libs/kubernetes-model-extensions-6.0.0.jar:/opt/kafka/bin/../libs/libthrift-0.15.0.jar:/opt/kafka/bin/../libs/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/opt/kafka/bin/../libs/logging-interceptor-3.12.12.jar:/opt/kafka/bin/../libs/lz4-java-1.8.0.jar:/opt/kafka/bin/../libs/maven-artifact-3.8.4.jar:/opt/kafka/bin/../libs/metrics-core-2.2.0.jar:/opt/kafka/bin/../libs/metrics-core-4.1.12.1.jar:/opt/kafka/bin/../libs/mirror-maker-2-extensions-1.2.0.jar:/opt/kafka/bin/../libs/mirror-maker-agent-0.32.0.jar:/opt/kafka/bin/../libs/netty-buffer-4.1.78.Final.jar:/opt/kafka/bin/../libs/netty-codec-4.1.78.Final.jar:/opt/kafka/bin/../libs/netty-common-4.1.78.Final.jar:/opt/kafka/bin/../libs/netty-handler-4.1.78.Final.jar:/opt/kafka/bin/../libs/netty-resolver-4.1.78.Final.jar:/opt/kafka/bin/../libs/netty-transport-4.1.78.Final.jar:/opt/kafka/bin/../libs/netty-transport-classes-epoll-4.1.78.Final.jar:/opt/kafka/bin/../libs/netty-transport-native-epoll-4.1.78.Final.jar:/opt/kafka/bin/../libs/netty-transport-native-unix-common-4.1.78.Final.jar:/opt/kafka/bin/../libs/nimbus-jose-jwt-9.10.jar:/opt/kafka/bin/../libs/okhttp-4.10.0.jar:/opt/kafka/bin/../libs/okio-jvm-3.0.0.jar:/opt/kafka/bin/../libs/opa-authorizer-1.5.0.jar:/opt/kafka/bin/../libs/opentelemetry-api-1.18.0.jar:/opt/kafka/bin/../libs/opentelemetry-context-1.18.0.jar:/opt/kafka/bin/../libs/opentelemetry-exporter-common-1.18.0.jar:/opt/kafka/bin/../libs/opentelemetry-exporter-jaeger-1.18.0.jar:/opt/kafka/bin/../libs/opentelemetry-instrumentation-api-1.18.0.jar:/opt/kafka/bin/../libs/opentelemetry-instrumentation-api-semconv-1.18.0-alpha.jar:/opt/kafka/bin/../libs/opentelemetry-kafka-clients-2.6-1.18.0-alpha.jar:/opt/kafka/bin/../libs/opentelemetry-kafka-clients-common-1.18.0-alpha.jar:/opt/kafka/bin/../libs/opentelemetry-sdk-1.18.0.jar:/opt/kafka/bin/../libs/opentelemetry-sdk-common-1.18.0.jar:/opt/kafka/bin/../libs/opentelemetry-sdk-extension-autoconfigure-1.18.0-alpha.jar:/opt/kafka/bin/../libs/opentelemetry-sdk-extension-autoconfigure-spi-1.18.0.jar:/opt/kafka/bin/../libs/opentelemetry-sdk-logs-1.18.0-alpha.jar:/opt/kafka/bin/../libs/opentelemetry-sdk-metrics-1.18.0.jar:/opt/kafka/bin/../libs/opentelemetry-sdk-trace-1.18.0.jar:/opt/kafka/bin/../libs/opentelemetry-semconv-1.18.0-alpha.jar:/opt/kafka/bin/../libs/opentracing-api-0.33.0.jar:/opt/kafka/bin/../libs/opentracing-kafka-client-0.1.15.jar:/opt/kafka/bin/../libs/opentracing-noop-0.33.0.jar:/opt/kafka/bin/../libs/opentracing-tracerresolver-0.1.8.jar:/opt/kafka/bin/../libs/opentracing-util-0.33.0.jar:/opt/kafka/bin/../libs/osgi-resource-locator-1.0.3.jar:/opt/kafka/bin/../libs/paranamer-2.8.jar:/opt/kafka/bin/../libs/plexus-utils-3.3.0.jar:/opt/kafka/bin/../libs/reflections-0.9.12.jar:/opt/kafka/bin/../libs/reload4j-1.2.19.jar:/opt/kafka/bin/../libs/rocksdbjni-6.29.4.1.jar:/opt/kafka/bin/../libs/scala-collection-compat_2.13-2.6.0.jar:/opt/kafka/bin/../libs/scala-java8-compat_2.13-1.0.2.jar:/opt/kafka/bin/../libs/scala-library-2.13.8.jar:/opt/kafka/bin/../libs/scala-logging_2.13-3.9.4.jar:/opt/kafka/bin/../libs/scala-reflect-2.13.8.jar:/opt/kafka/bin/../libs/slf4j-api-1.7.30.jar:/opt/kafka/bin/../libs/slf4j-api-1.7.36.jar:/opt/kafka/bin/../libs/slf4j-reload4j-1.7.36.jar:/opt/kafka/bin/../libs/snakeyaml-1.33.jar:/opt/kafka/bin/../libs/snappy-java-1.1.8.4.jar:/opt/kafka/bin/../libs/swagger-annotations-2.2.0.jar:/opt/kafka/bin/../libs/tracing-agent-0.32.0.jar:/opt/kafka/bin/../libs/trogdor-3.3.1.jar:/opt/kafka/bin/../libs/zjsonpatch-0.3.0.jar:/opt/kafka/bin/../libs/zookeeper-3.6.3.jar:/opt/kafka/bin/../libs/zookeeper-jute-3.6.3.jar:/opt/kafka/bin/../libs/zstd-jni-1.5.2-1.jar
+	os.spec = Linux, amd64, 5.4.0-1098-azure
+	os.vcpus = 4
+ (org.apache.kafka.connect.runtime.WorkerInfo) [main]
+2023-01-10 19:00:48,355 INFO Scanning for plugin classes. This might take a moment ... (org.apache.kafka.connect.cli.ConnectDistributed) [main]
+2023-01-10 19:00:48,369 INFO Loading plugin from: /opt/kafka/plugins/debezium-connector-postgres (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:48,854 INFO Registered loader: PluginClassLoader{pluginLocation=file:/opt/kafka/plugins/debezium-connector-postgres/} (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:48,854 INFO Added plugin 'io.debezium.connector.postgresql.PostgresConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:48,854 INFO Added plugin 'io.debezium.converters.ByteArrayConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:48,854 INFO Added plugin 'io.debezium.converters.BinaryDataConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:48,854 INFO Added plugin 'io.debezium.converters.CloudEventsConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:48,854 INFO Added plugin 'io.debezium.transforms.ExtractNewRecordState' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:48,854 INFO Added plugin 'io.debezium.transforms.outbox.EventRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:48,855 INFO Added plugin 'io.debezium.transforms.partitions.ComputePartition' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:48,855 INFO Added plugin 'io.debezium.transforms.ByLogicalTableRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:48,855 INFO Added plugin 'io.debezium.transforms.tracing.ActivateTracingSpan' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:48,855 INFO Added plugin 'org.apache.kafka.connect.connector.policy.AllConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:48,855 INFO Added plugin 'org.apache.kafka.connect.connector.policy.PrincipalConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:48,855 INFO Added plugin 'org.apache.kafka.connect.connector.policy.NoneConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:48,861 INFO Loading plugin from: /opt/kafka/plugins/debezium-connector-mysql (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:49,333 INFO Registered loader: PluginClassLoader{pluginLocation=file:/opt/kafka/plugins/debezium-connector-mysql/} (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:49,334 INFO Added plugin 'io.debezium.connector.mysql.MySqlConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:49,335 INFO Added plugin 'io.debezium.connector.mysql.transforms.ReadToInsertEvent' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,343 INFO Registered loader: jdk.internal.loader.ClassLoaders$AppClassLoader@75b84c92 (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,343 INFO Added plugin 'org.apache.kafka.connect.tools.VerifiableSinkConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,343 INFO Added plugin 'org.apache.kafka.connect.tools.MockSinkConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,344 INFO Added plugin 'org.apache.kafka.connect.tools.VerifiableSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,344 INFO Added plugin 'org.apache.kafka.connect.mirror.MirrorSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,344 INFO Added plugin 'org.apache.kafka.connect.mirror.MirrorHeartbeatConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,344 INFO Added plugin 'org.apache.kafka.connect.tools.MockSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,344 INFO Added plugin 'org.apache.kafka.connect.tools.SchemaSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,344 INFO Added plugin 'org.apache.kafka.connect.mirror.MirrorCheckpointConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,344 INFO Added plugin 'org.apache.kafka.connect.converters.FloatConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,344 INFO Added plugin 'org.apache.kafka.connect.converters.DoubleConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,344 INFO Added plugin 'org.apache.kafka.connect.converters.ByteArrayConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,344 INFO Added plugin 'org.apache.kafka.connect.converters.IntegerConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,344 INFO Added plugin 'org.apache.kafka.connect.converters.LongConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,344 INFO Added plugin 'org.apache.kafka.connect.json.JsonConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,344 INFO Added plugin 'org.apache.kafka.connect.storage.StringConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,344 INFO Added plugin 'org.apache.kafka.connect.converters.ShortConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.storage.SimpleHeaderConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.transforms.ReplaceField$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.transforms.SetSchemaMetadata$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.transforms.ReplaceField$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.transforms.Filter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.transforms.HeaderFrom$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.transforms.InsertField$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.transforms.TimestampConverter$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.transforms.MaskField$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.transforms.TimestampRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.transforms.RegexRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.transforms.HoistField$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.transforms.ValueToKey' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.transforms.MaskField$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.transforms.DropHeaders' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.transforms.Cast$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.transforms.Cast$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,345 INFO Added plugin 'org.apache.kafka.connect.runtime.PredicatedTransformation' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'org.apache.kafka.connect.transforms.ExtractField$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'org.apache.kafka.connect.transforms.Flatten$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'org.apache.kafka.connect.transforms.InsertHeader' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'org.apache.kafka.connect.transforms.InsertField$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'org.apache.kafka.connect.transforms.Flatten$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'org.apache.kafka.connect.transforms.HeaderFrom$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'org.apache.kafka.connect.transforms.SetSchemaMetadata$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'org.apache.kafka.connect.transforms.ExtractField$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'org.apache.kafka.connect.transforms.TimestampConverter$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'org.apache.kafka.connect.transforms.HoistField$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'org.apache.kafka.connect.transforms.predicates.HasHeaderKey' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'org.apache.kafka.connect.transforms.predicates.RecordIsTombstone' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'org.apache.kafka.connect.transforms.predicates.TopicNameMatches' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'org.apache.kafka.common.config.provider.FileConfigProvider' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'org.apache.kafka.common.config.provider.DirectoryConfigProvider' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'io.strimzi.kafka.EnvVarConfigProvider' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'io.strimzi.kafka.KubernetesConfigMapConfigProvider' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'io.strimzi.kafka.KubernetesSecretConfigProvider' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,346 INFO Added plugin 'org.apache.kafka.connect.rest.basic.auth.extension.BasicAuthSecurityRestExtension' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,351 INFO Added aliases 'MySqlConnector' and 'MySql' to plugin 'io.debezium.connector.mysql.MySqlConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,351 INFO Added aliases 'PostgresConnector' and 'Postgres' to plugin 'io.debezium.connector.postgresql.PostgresConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,351 INFO Added aliases 'MirrorCheckpointConnector' and 'MirrorCheckpoint' to plugin 'org.apache.kafka.connect.mirror.MirrorCheckpointConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,351 INFO Added aliases 'MirrorHeartbeatConnector' and 'MirrorHeartbeat' to plugin 'org.apache.kafka.connect.mirror.MirrorHeartbeatConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,351 INFO Added aliases 'MirrorSourceConnector' and 'MirrorSource' to plugin 'org.apache.kafka.connect.mirror.MirrorSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,351 INFO Added aliases 'MockSinkConnector' and 'MockSink' to plugin 'org.apache.kafka.connect.tools.MockSinkConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,351 INFO Added aliases 'MockSourceConnector' and 'MockSource' to plugin 'org.apache.kafka.connect.tools.MockSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,351 INFO Added aliases 'SchemaSourceConnector' and 'SchemaSource' to plugin 'org.apache.kafka.connect.tools.SchemaSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,351 INFO Added aliases 'VerifiableSinkConnector' and 'VerifiableSink' to plugin 'org.apache.kafka.connect.tools.VerifiableSinkConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,352 INFO Added aliases 'VerifiableSourceConnector' and 'VerifiableSource' to plugin 'org.apache.kafka.connect.tools.VerifiableSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,352 INFO Added aliases 'BinaryDataConverter' and 'BinaryData' to plugin 'io.debezium.converters.BinaryDataConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,352 INFO Added aliases 'CloudEventsConverter' and 'CloudEvents' to plugin 'io.debezium.converters.CloudEventsConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,352 INFO Added aliases 'DoubleConverter' and 'Double' to plugin 'org.apache.kafka.connect.converters.DoubleConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,352 INFO Added aliases 'FloatConverter' and 'Float' to plugin 'org.apache.kafka.connect.converters.FloatConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,352 INFO Added aliases 'IntegerConverter' and 'Integer' to plugin 'org.apache.kafka.connect.converters.IntegerConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,353 INFO Added aliases 'LongConverter' and 'Long' to plugin 'org.apache.kafka.connect.converters.LongConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,353 INFO Added aliases 'ShortConverter' and 'Short' to plugin 'org.apache.kafka.connect.converters.ShortConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,353 INFO Added aliases 'JsonConverter' and 'Json' to plugin 'org.apache.kafka.connect.json.JsonConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,353 INFO Added aliases 'StringConverter' and 'String' to plugin 'org.apache.kafka.connect.storage.StringConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,353 INFO Added aliases 'BinaryDataConverter' and 'BinaryData' to plugin 'io.debezium.converters.BinaryDataConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,353 INFO Added aliases 'DoubleConverter' and 'Double' to plugin 'org.apache.kafka.connect.converters.DoubleConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,353 INFO Added aliases 'FloatConverter' and 'Float' to plugin 'org.apache.kafka.connect.converters.FloatConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,353 INFO Added aliases 'IntegerConverter' and 'Integer' to plugin 'org.apache.kafka.connect.converters.IntegerConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,353 INFO Added aliases 'LongConverter' and 'Long' to plugin 'org.apache.kafka.connect.converters.LongConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,354 INFO Added aliases 'ShortConverter' and 'Short' to plugin 'org.apache.kafka.connect.converters.ShortConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,354 INFO Added aliases 'JsonConverter' and 'Json' to plugin 'org.apache.kafka.connect.json.JsonConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,354 INFO Added aliases 'SimpleHeaderConverter' and 'Simple' to plugin 'org.apache.kafka.connect.storage.SimpleHeaderConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,354 INFO Added aliases 'StringConverter' and 'String' to plugin 'org.apache.kafka.connect.storage.StringConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,354 INFO Added alias 'ReadToInsertEvent' to plugin 'io.debezium.connector.mysql.transforms.ReadToInsertEvent' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,354 INFO Added alias 'ByLogicalTableRouter' to plugin 'io.debezium.transforms.ByLogicalTableRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,354 INFO Added alias 'ExtractNewRecordState' to plugin 'io.debezium.transforms.ExtractNewRecordState' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,355 INFO Added alias 'EventRouter' to plugin 'io.debezium.transforms.outbox.EventRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,355 INFO Added alias 'ComputePartition' to plugin 'io.debezium.transforms.partitions.ComputePartition' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,356 INFO Added alias 'ActivateTracingSpan' to plugin 'io.debezium.transforms.tracing.ActivateTracingSpan' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,356 INFO Added aliases 'PredicatedTransformation' and 'Predicated' to plugin 'org.apache.kafka.connect.runtime.PredicatedTransformation' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,356 INFO Added alias 'DropHeaders' to plugin 'org.apache.kafka.connect.transforms.DropHeaders' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,356 INFO Added alias 'Filter' to plugin 'org.apache.kafka.connect.transforms.Filter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,357 INFO Added alias 'InsertHeader' to plugin 'org.apache.kafka.connect.transforms.InsertHeader' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,357 INFO Added alias 'RegexRouter' to plugin 'org.apache.kafka.connect.transforms.RegexRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,357 INFO Added alias 'TimestampRouter' to plugin 'org.apache.kafka.connect.transforms.TimestampRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,358 INFO Added alias 'ValueToKey' to plugin 'org.apache.kafka.connect.transforms.ValueToKey' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,358 INFO Added alias 'HasHeaderKey' to plugin 'org.apache.kafka.connect.transforms.predicates.HasHeaderKey' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,358 INFO Added alias 'RecordIsTombstone' to plugin 'org.apache.kafka.connect.transforms.predicates.RecordIsTombstone' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,358 INFO Added alias 'TopicNameMatches' to plugin 'org.apache.kafka.connect.transforms.predicates.TopicNameMatches' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,358 INFO Added alias 'BasicAuthSecurityRestExtension' to plugin 'org.apache.kafka.connect.rest.basic.auth.extension.BasicAuthSecurityRestExtension' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,358 INFO Added aliases 'AllConnectorClientConfigOverridePolicy' and 'All' to plugin 'org.apache.kafka.connect.connector.policy.AllConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,359 INFO Added aliases 'NoneConnectorClientConfigOverridePolicy' and 'None' to plugin 'org.apache.kafka.connect.connector.policy.NoneConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,359 INFO Added aliases 'PrincipalConnectorClientConfigOverridePolicy' and 'Principal' to plugin 'org.apache.kafka.connect.connector.policy.PrincipalConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader) [main]
+2023-01-10 19:00:51,400 INFO Configuring Kubernetes Secret config provider (io.strimzi.kafka.AbstractKubernetesConfigProvider) [main]
+2023-01-10 19:00:51,864 INFO Closing Kubernetes Secret config provider (io.strimzi.kafka.AbstractKubernetesConfigProvider) [main]
+2023-01-10 19:00:51,879 INFO DistributedConfig values: 
+	access.control.allow.methods = 
+	access.control.allow.origin = 
+	admin.listeners = null
+	bootstrap.servers = [anh-test-eventhub.servicebus.windows.net:9093]
+	client.dns.lookup = use_all_dns_ips
+	client.id = 
+	config.providers = [secrets]
+	config.storage.replication.factor = 1
+	config.storage.topic = connect-cluster-configs
+	connect.protocol = sessioned
+	connections.max.idle.ms = 540000
+	connector.client.config.override.policy = All
+	exactly.once.source.support = disabled
+	group.id = connect-cluster
+	header.converter = class org.apache.kafka.connect.storage.SimpleHeaderConverter
+	heartbeat.interval.ms = 3000
+	inter.worker.key.generation.algorithm = HmacSHA256
+	inter.worker.key.size = null
+	inter.worker.key.ttl.ms = 3600000
+	inter.worker.signature.algorithm = HmacSHA256
+	inter.worker.verification.algorithms = [HmacSHA256]
+	key.converter = class org.apache.kafka.connect.json.JsonConverter
+	listeners = [http://:8083]
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	offset.flush.interval.ms = 10000
+	offset.flush.timeout.ms = 5000
+	offset.storage.partitions = 25
+	offset.storage.replication.factor = 1
+	offset.storage.topic = connect-cluster-offsets
+	plugin.path = [/opt/kafka/plugins]
+	rebalance.timeout.ms = 60000
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 40000
+	response.http.headers.config = 
+	rest.advertised.host.name = 10.244.1.96
+	rest.advertised.listener = null
+	rest.advertised.port = 8083
+	rest.extension.classes = []
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	scheduled.rebalance.max.delay.ms = 300000
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.client.auth = none
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	status.storage.partitions = 5
+	status.storage.replication.factor = 1
+	status.storage.topic = connect-cluster-status
+	task.shutdown.graceful.timeout.ms = 5000
+	topic.creation.enable = true
+	topic.tracking.allow.reset = true
+	topic.tracking.enable = true
+	value.converter = class org.apache.kafka.connect.json.JsonConverter
+	worker.sync.timeout.ms = 3000
+	worker.unsync.backoff.ms = 300000
+ (org.apache.kafka.connect.runtime.distributed.DistributedConfig) [main]
+2023-01-10 19:00:51,879 WARN The worker has been configured with one or more internal converter properties ([internal.key.converter, schemas.enable, internal.value.converter, schemas.enable]). Support for these properties was deprecated in version 2.0 and removed in version 3.0, and specifying them will have no effect. Instead, an instance of the JsonConverter with schemas.enable set to false will be used. For more information, please visit http://kafka.apache.org/documentation/#upgrade and consult the upgrade notesfor the 3.0 release. (org.apache.kafka.connect.runtime.WorkerConfig) [main]
+2023-01-10 19:00:51,881 INFO Creating Kafka admin client (org.apache.kafka.connect.util.ConnectUtils) [main]
+2023-01-10 19:00:51,884 INFO Configuring Kubernetes Secret config provider (io.strimzi.kafka.AbstractKubernetesConfigProvider) [main]
+2023-01-10 19:00:51,893 INFO Closing Kubernetes Secret config provider (io.strimzi.kafka.AbstractKubernetesConfigProvider) [main]
+2023-01-10 19:00:51,894 INFO AdminClientConfig values: 
+	bootstrap.servers = [anh-test-eventhub.servicebus.windows.net:9093]
+	client.dns.lookup = use_all_dns_ips
+	client.id = 
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+ (org.apache.kafka.clients.admin.AdminClientConfig) [main]
+2023-01-10 19:00:51,984 WARN These configurations '[producer.sasl.jaas.config, group.id, rest.advertised.port, plugin.path, config.providers, consumer.sasl.mechanism, admin.security.protocol, internal.key.converter.schemas.enable, config.providers.secrets.class, status.storage.replication.factor, offset.storage.topic, consumer.security.protocol, value.converter, key.converter, consumer.client.rack, consumer.sasl.jaas.config, config.storage.topic, producer.security.protocol, rest.advertised.host.name, status.storage.topic, producer.sasl.mechanism, rest.port, config.storage.replication.factor, offset.flush.interval.ms, internal.key.converter, producer.override.max.request.size, internal.value.converter.schemas.enable, internal.value.converter, offset.storage.replication.factor]' were supplied but are not used yet. (org.apache.kafka.clients.admin.AdminClientConfig) [main]
+2023-01-10 19:00:51,984 INFO Kafka version: 3.3.1 (org.apache.kafka.common.utils.AppInfoParser) [main]
+2023-01-10 19:00:51,984 INFO Kafka commitId: e23c59d00e687ff5 (org.apache.kafka.common.utils.AppInfoParser) [main]
+2023-01-10 19:00:51,984 INFO Kafka startTimeMs: 1673377251984 (org.apache.kafka.common.utils.AppInfoParser) [main]
+2023-01-10 19:00:52,282 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:52,288 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 0 due to node -1 being disconnected (elapsed time since creation: 273ms, elapsed time since send: 273ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:52,394 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:52,395 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 1 due to node -1 being disconnected (elapsed time since creation: 2ms, elapsed time since send: 2ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:52,601 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:52,601 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 2 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:52,908 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:52,908 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 3 due to node -1 being disconnected (elapsed time since creation: 2ms, elapsed time since send: 2ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:53,316 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:53,316 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 4 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:54,026 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:54,026 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 5 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:55,228 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:55,228 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 6 due to node -1 being disconnected (elapsed time since creation: 94ms, elapsed time since send: 94ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:56,348 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:56,349 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 7 due to node -1 being disconnected (elapsed time since creation: 11ms, elapsed time since send: 11ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:57,460 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:57,461 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 8 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:58,573 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:58,573 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 9 due to node -1 being disconnected (elapsed time since creation: 2ms, elapsed time since send: 2ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:59,585 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:00:59,585 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 10 due to node -1 being disconnected (elapsed time since creation: 4ms, elapsed time since send: 4ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:00,495 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:00,495 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 11 due to node -1 being disconnected (elapsed time since creation: 2ms, elapsed time since send: 2ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:01,605 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:01,605 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 12 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:02,514 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:02,515 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 13 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:03,755 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:03,755 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 14 due to node -1 being disconnected (elapsed time since creation: 133ms, elapsed time since send: 133ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:05,002 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:05,002 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 15 due to node -1 being disconnected (elapsed time since creation: 39ms, elapsed time since send: 39ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:06,016 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:06,017 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 16 due to node -1 being disconnected (elapsed time since creation: 7ms, elapsed time since send: 7ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:07,070 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:07,070 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 17 due to node -1 being disconnected (elapsed time since creation: 46ms, elapsed time since send: 46ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:08,268 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:08,268 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 18 due to node -1 being disconnected (elapsed time since creation: 89ms, elapsed time since send: 89ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:09,479 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:09,479 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 19 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:10,430 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:10,430 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 20 due to node -1 being disconnected (elapsed time since creation: 44ms, elapsed time since send: 44ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:11,450 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:11,451 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 21 due to node -1 being disconnected (elapsed time since creation: 12ms, elapsed time since send: 12ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:12,562 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:12,562 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 22 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:13,677 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:13,678 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 23 due to node -1 being disconnected (elapsed time since creation: 8ms, elapsed time since send: 8ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:14,889 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:14,889 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 24 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:15,797 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:15,797 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 25 due to node -1 being disconnected (elapsed time since creation: 2ms, elapsed time since send: 2ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:17,006 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:17,007 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 26 due to node -1 being disconnected (elapsed time since creation: 2ms, elapsed time since send: 2ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:18,121 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:18,122 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 27 due to node -1 being disconnected (elapsed time since creation: 7ms, elapsed time since send: 7ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:19,195 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:19,195 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 28 due to node -1 being disconnected (elapsed time since creation: 67ms, elapsed time since send: 67ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:20,271 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:20,271 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 29 due to node -1 being disconnected (elapsed time since creation: 69ms, elapsed time since send: 69ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:21,310 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:21,367 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 30 due to node -1 being disconnected (elapsed time since creation: 15ms, elapsed time since send: 15ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:21,990 INFO [AdminClient clientId=adminclient-1] Metadata update failed (org.apache.kafka.clients.admin.internals.AdminMetadataManager) [kafka-admin-client-thread | adminclient-1]
+org.apache.kafka.common.errors.TimeoutException: Timed out waiting for a node assignment. Call: fetchMetadata
+2023-01-10 19:01:22,518 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:22,519 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 31 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:23,538 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:23,538 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 32 due to node -1 being disconnected (elapsed time since creation: 2ms, elapsed time since send: 2ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:24,760 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:24,760 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 33 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:25,669 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:25,669 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 34 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:26,896 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:26,897 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 35 due to node -1 being disconnected (elapsed time since creation: 11ms, elapsed time since send: 11ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:27,912 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:27,913 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 36 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:29,129 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:29,130 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 37 due to node -1 being disconnected (elapsed time since creation: 6ms, elapsed time since send: 6ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:30,341 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:30,341 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 38 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:31,353 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:31,353 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 39 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:32,462 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:32,463 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 40 due to node -1 being disconnected (elapsed time since creation: 2ms, elapsed time since send: 2ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:33,472 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:33,473 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 41 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:34,487 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:34,487 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 42 due to node -1 being disconnected (elapsed time since creation: 8ms, elapsed time since send: 8ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:35,699 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:35,700 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 43 due to node -1 being disconnected (elapsed time since creation: 2ms, elapsed time since send: 2ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:36,809 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:36,810 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 44 due to node -1 being disconnected (elapsed time since creation: 2ms, elapsed time since send: 2ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:38,019 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:38,019 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 45 due to node -1 being disconnected (elapsed time since creation: 2ms, elapsed time since send: 2ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:38,928 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:38,928 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 46 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:39,937 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:39,938 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 47 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:41,147 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:41,147 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 48 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:42,056 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:42,056 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 49 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:43,275 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:43,275 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 50 due to node -1 being disconnected (elapsed time since creation: 11ms, elapsed time since send: 11ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:44,184 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:44,184 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 51 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:45,094 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:45,094 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 52 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:46,205 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:46,205 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 53 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:47,414 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:47,415 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 54 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:48,624 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:48,624 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 55 due to node -1 being disconnected (elapsed time since creation: 2ms, elapsed time since send: 2ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:49,733 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:49,734 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 56 due to node -1 being disconnected (elapsed time since creation: 2ms, elapsed time since send: 2ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:50,843 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:50,844 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 57 due to node -1 being disconnected (elapsed time since creation: 2ms, elapsed time since send: 2ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:51,953 INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:51,953 INFO [AdminClient clientId=adminclient-1] Cancelled in-flight API_VERSIONS request with correlation id 58 due to node -1 being disconnected (elapsed time since creation: 3ms, elapsed time since send: 3ms, request timeout: 3600000ms) (org.apache.kafka.clients.NetworkClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:51,990 INFO [AdminClient clientId=adminclient-1] Metadata update failed (org.apache.kafka.clients.admin.internals.AdminMetadataManager) [kafka-admin-client-thread | adminclient-1]
+org.apache.kafka.common.errors.TimeoutException: Timed out waiting for a node assignment. Call: fetchMetadata
+2023-01-10 19:01:51,992 INFO App info kafka.admin.client for adminclient-1 unregistered (org.apache.kafka.common.utils.AppInfoParser) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:51,992 INFO [AdminClient clientId=adminclient-1] Metadata update failed (org.apache.kafka.clients.admin.internals.AdminMetadataManager) [kafka-admin-client-thread | adminclient-1]
+org.apache.kafka.common.errors.TimeoutException: The AdminClient thread has exited. Call: fetchMetadata
+2023-01-10 19:01:51,992 INFO [AdminClient clientId=adminclient-1] Timed out 1 remaining operation(s) during close. (org.apache.kafka.clients.admin.KafkaAdminClient) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:51,997 INFO Metrics scheduler closed (org.apache.kafka.common.metrics.Metrics) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:51,997 INFO Closing reporter org.apache.kafka.common.metrics.JmxReporter (org.apache.kafka.common.metrics.Metrics) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:51,997 INFO Metrics reporters closed (org.apache.kafka.common.metrics.Metrics) [kafka-admin-client-thread | adminclient-1]
+2023-01-10 19:01:51,997 ERROR Stopping due to error (org.apache.kafka.connect.cli.ConnectDistributed) [main]
+org.apache.kafka.connect.errors.ConnectException: Failed to connect to and describe Kafka cluster. Check worker's broker connection and security properties.
+	at org.apache.kafka.connect.util.ConnectUtils.lookupKafkaClusterId(ConnectUtils.java:77)
+	at org.apache.kafka.connect.util.ConnectUtils.lookupKafkaClusterId(ConnectUtils.java:58)
+	at org.apache.kafka.connect.cli.ConnectDistributed.startConnect(ConnectDistributed.java:97)
+	at org.apache.kafka.connect.cli.ConnectDistributed.main(ConnectDistributed.java:80)
+Caused by: java.util.concurrent.ExecutionException: org.apache.kafka.common.errors.TimeoutException: Timed out waiting for a node assignment. Call: listNodes
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:395)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:1999)
+	at org.apache.kafka.common.internals.KafkaFutureImpl.get(KafkaFutureImpl.java:165)
+	at org.apache.kafka.connect.util.ConnectUtils.lookupKafkaClusterId(ConnectUtils.java:71)
+	... 3 more
+Caused by: org.apache.kafka.common.errors.TimeoutException: Timed out waiting for a node assignment. Call: listNodes

@@ -3,7 +3,7 @@ kind: KafkaConnector
 metadata:
   name: debezium-connector-mysql-eh
   labels:
-    strimzi.io/cluster: debezium-connect-cluster
+    strimzi.io/cluster: kafka-connect-eh
 spec:
   class: io.debezium.connector.mysql.MySqlConnector
   tasksMax: 1
